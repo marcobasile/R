@@ -1,0 +1,84 @@
+---
+title: "Standard Deviation"
+output: html_notebook
+---
+```{r message=FALSE, warning=FALSE, error=TRUE}
+library(readr)
+library(dplyr)
+```
+
+```{r error=TRUE}
+load("project.Rda")
+```
+
+```{r error=TRUE}
+# Change these variables to be the standard deviation of each dataset.
+# Inspect Data
+head(london_data)
+
+print(nrow(london_data))
+
+#39106
+
+temp <- london_data$TemperatureC
+
+
+
+average_temp <- mean(temp)
+print(average_temp)
+
+#12.08197
+
+
+# Variance and SD for the year
+temperature_var <- var(temp)
+print(temperature_var)
+
+#29.7164
+
+temperature_standard_deviation <- sd(temp)
+print(temperature_standard_deviation)
+
+#5.451275
+
+
+#Inspect once again
+head(london_data)
+
+
+
+june <- london_data %>%
+  filter(month == "06")
+
+july <- london_data %>%
+  filter(month == "07")
+
+# Get monthly temperature average
+
+temp_june <- june$TemperatureC
+temp_july <- july$TemperatureC
+
+average_temp_june <- mean(temp_june)
+print(average_temp_june)
+
+#17.04729
+
+average_temp_july <- mean(temp_july)
+print(average_temp_july)
+
+#18.77561
+
+sd_temp_june <- sd(temp_june)
+print(sd_temp_june)
+
+#4.59863
+
+sd_temp_july <- sd(temp_july)
+print(sd_temp_july)
+
+#4.137097
+
+#***CONCLUSIONS***
+
+#Based on the analysis above, I'd rather pick the month of July for a vacation in London, since there's an higher temperature on average.
+#On top of that, there's even a lower sd, which means that there's a lower probability to have an outsider during my vacation."""
